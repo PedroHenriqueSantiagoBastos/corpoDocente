@@ -1,8 +1,6 @@
 package br.ucsal.corpoDocente.service;
 
-import br.ucsal.corpoDocente.dto.ProfessorCreateDTO;
-import br.ucsal.corpoDocente.dto.ProfessorResponseDTO;
-import br.ucsal.corpoDocente.dto.ProfessorUpdateDTO;
+import br.ucsal.corpoDocente.dto.ProfessorDTO;
 import br.ucsal.corpoDocente.mapper.ProfessorMapper;
 import br.ucsal.corpoDocente.model.Professor;
 import br.ucsal.corpoDocente.repository.ProfessorRepository;
@@ -24,7 +22,7 @@ public class ProfessorService {
     }
 
     @Transactional
-    public ProfessorResponseDTO create(ProfessorCreateDTO dto) {
+    public ProfessorDTO create(ProfessorDTO dto) {
 
         Optional<Professor> existente = repository.findByNumeroRegistro(dto.getNumeroRegistro());
 
@@ -37,18 +35,18 @@ public class ProfessorService {
         return mapper.toResponseDTO(entity);
     }
 
-    public List<ProfessorResponseDTO> findAll() {
+    public List<ProfessorDTO> findAll() {
         return mapper.toResponseDTOList(repository.findAll());
     }
 
-    public ProfessorResponseDTO findById(Integer id) {
+    public ProfessorDTO findById(Integer id) {
         Professor entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado com ID: " + id));
         return mapper.toResponseDTO(entity);
     }
 
     @Transactional
-    public ProfessorResponseDTO update(Integer id, ProfessorUpdateDTO dto) {
+    public ProfessorDTO update(Integer id, ProfessorDTO dto) {
 
         Professor entity = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado com ID: " + id));

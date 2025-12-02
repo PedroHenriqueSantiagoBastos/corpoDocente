@@ -1,8 +1,6 @@
 package br.ucsal.corpoDocente.controller;
 
-import br.ucsal.corpoDocente.dto.ProfessorCreateDTO;
-import br.ucsal.corpoDocente.dto.ProfessorResponseDTO;
-import br.ucsal.corpoDocente.dto.ProfessorUpdateDTO;
+import br.ucsal.corpoDocente.dto.ProfessorDTO;
 import br.ucsal.corpoDocente.service.ProfessorService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -22,24 +20,24 @@ public class ProfessorController {
     }
 
     @PostMapping
-    public ResponseEntity<ProfessorResponseDTO> create(@RequestBody @Valid ProfessorCreateDTO dto) {
-        ProfessorResponseDTO response = service.create(dto);
+    public ResponseEntity<ProfessorDTO> create(@RequestBody @Valid ProfessorDTO dto) {
+        ProfessorDTO response = service.create(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
-    public ResponseEntity<List<ProfessorResponseDTO>> findAll() {
+    public ResponseEntity<List<ProfessorDTO>> findAll() {
         return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProfessorResponseDTO> findById(@PathVariable Integer id) {
+    public ResponseEntity<ProfessorDTO> findById(@PathVariable Integer id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ProfessorResponseDTO> update(@PathVariable Integer id,
-                                                       @RequestBody @Valid ProfessorUpdateDTO dto) {
+    public ResponseEntity<ProfessorDTO> update(@PathVariable Integer id,
+                                                       @RequestBody @Valid ProfessorDTO dto) {
         return ResponseEntity.ok(service.update(id, dto));
     }
 

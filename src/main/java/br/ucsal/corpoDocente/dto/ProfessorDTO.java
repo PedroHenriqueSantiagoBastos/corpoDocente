@@ -1,15 +1,19 @@
 package br.ucsal.corpoDocente.dto;
 
+public class ProfessorDTO {
 
-public class ProfessorResponseDTO {
-
+    private Integer id;
     private String nomeCompleto;
     private long numeroRegistro;
     private String escolaVinculada;
-    private int id;
-    private boolean ativo = true;
 
-    public ProfessorResponseDTO() {}
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getNomeCompleto() {
         return nomeCompleto;
@@ -35,14 +39,6 @@ public class ProfessorResponseDTO {
         this.escolaVinculada = escolaVinculada;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public boolean isAtivo() {
         return ativo;
     }
@@ -50,4 +46,6 @@ public class ProfessorResponseDTO {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
+    private boolean ativo = true;
 }

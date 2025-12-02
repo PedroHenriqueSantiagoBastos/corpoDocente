@@ -1,8 +1,6 @@
 package br.ucsal.corpoDocente.mapper;
 
-import br.ucsal.corpoDocente.dto.ProfessorCreateDTO;
-import br.ucsal.corpoDocente.dto.ProfessorResponseDTO;
-import br.ucsal.corpoDocente.dto.ProfessorUpdateDTO;
+import br.ucsal.corpoDocente.dto.ProfessorDTO;
 import br.ucsal.corpoDocente.model.Professor;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -17,14 +15,14 @@ import java.util.List;
 public interface ProfessorMapper {
 
 
-    Professor toEntity(ProfessorCreateDTO dto);
+    Professor toEntity(ProfessorDTO dto);
 
 
-    ProfessorResponseDTO toResponseDTO(Professor entity);
+    ProfessorDTO toResponseDTO(Professor entity);
 
 
-    void updateFromDto(ProfessorUpdateDTO dto, @MappingTarget Professor entity);
+    void updateFromDto(ProfessorDTO dto, @MappingTarget Professor entity);
 
 
-    List<ProfessorResponseDTO> toResponseDTOList(List<Professor> entities);
+    List<ProfessorDTO> toResponseDTOList(List<Professor> entities);
 }
